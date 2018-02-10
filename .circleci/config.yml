@@ -25,7 +25,7 @@ jobs:
           command: cd android/
           paths:
             - ~/.gradle
-          key: jars-{{ checksum "build.gradle" }}-{{ checksum  "app/build.gradle" }}
+          key: jars-{{ checksum "android/build.gradle" }}-{{ checksum  "android/app/build.gradle" }}
       - run:
           name: Run Tests
           command: cd android/ && ./gradlew lint test
