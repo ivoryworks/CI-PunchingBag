@@ -12,8 +12,8 @@ jobs:
       JVM_OPTS: -Xmx3200m
     steps:
       - checkout
-      pre: cd android/
       - restore_cache:
+          command: ce android/
           key: jars-{{ checksum "build.gradle" }}-{{ checksum  "app/build.gradle" }}
 #      - run:
 #         name: Chmod permissions #if permission for Gradlew Dependencies fail, use this. 
