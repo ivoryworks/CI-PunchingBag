@@ -23,13 +23,13 @@ jobs:
           command: cd android/ && ./gradlew androidDependencies
       - save_cache:
           paths:
-            - ~/.gradle
+            - ~/android/.gradle
           key: jars-{{ checksum "build.gradle" }}-{{ checksum  "app/build.gradle" }}
       - run:
           name: Run Tests
-          command: ./gradlew lint test
+          command: cd android/ && ./gradlew lint test
       - store_artifacts:
-          path: app/build/reports
+          path: android/app/build/reports
           destination: reports
       - store_test_results:
-          path: app/build/test-results
+          path: android/app/build/test-results
