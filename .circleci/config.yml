@@ -6,6 +6,8 @@ version: 2
 machine:
   java:
     version: oraclejdk8
+  ruby:
+    version: ruby-2.4.1
   environment:
     ANDROID_HOME: /usr/local/android-sdk-linux
 jobs:
@@ -34,3 +36,6 @@ jobs:
           destination: reports
       - store_test_results:
           path: android/app/build/test-results
+test:
+  override:
+    - bundle exec danger
