@@ -29,6 +29,9 @@ jobs:
             - ~/.gradle
           key: jars-{{ checksum "android/build.gradle" }}-{{ checksum  "android/app/build.gradle" }}
       - run:
+          name: Run danger
+          command: bundle exec danger
+      - run:
           name: Run Tests
           command: cd android/ && ./gradlew lint test
       - store_artifacts:
@@ -36,6 +39,3 @@ jobs:
           destination: reports
       - store_test_results:
           path: android/app/build/test-results
-test:
-  override:
-    - bundle exec danger
