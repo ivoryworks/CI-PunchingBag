@@ -12,6 +12,17 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         TextView echoText = findViewById(R.id.text_echo);
-        echoText.setText(String.valueOf(System.currentTimeMillis()));
+        long currentMillis = System.currentTimeMillis();
+        if (isEven(currentMillis)) {
+            echoText.setText(String.valueOf(System.currentTimeMillis()));
+        }
+    }
+
+    private boolean isEven(long value) {
+        if (value % 2 == 0) {
+            return true;
+        } else {
+            return false;
+        }
     }
 }
