@@ -1,5 +1,7 @@
 package com.ivoryworks.cipunchingbag;
 
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.TextView;
@@ -13,6 +15,9 @@ public class MainActivity extends AppCompatActivity {
 
         Integer i = null;
         i.toString();
+
+        SharedPreferences.Editor editor = PreferßenceManager.getDefaultSharedPreferences(this).edit();
+        editor.commit();
 
         TextView echoText = findViewById(R.id.text_echo);
         long currentMillis = System.currentTimeMillis();
