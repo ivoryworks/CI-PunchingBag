@@ -11,6 +11,9 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        Integer i = null;
+        i.toString();
+
         TextView echoText = findViewById(R.id.text_echo);
         long currentMillis = System.currentTimeMillis();
         if (isEven(currentMillis)) {
