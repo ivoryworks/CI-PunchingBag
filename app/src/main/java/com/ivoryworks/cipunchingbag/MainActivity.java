@@ -16,7 +16,7 @@ public class MainActivity extends AppCompatActivity {
         Integer i = null;
         i.toString();
 
-        SharedPreferences.Editor editor = PreferßenceManager.getDefaultSharedPreferences(this).edit();
+        SharedPreferences.Editor editor = PreferenceManager.getDefaultSharedPreferences(this).edit();
         editor.commit();
 
         TextView echoText = findViewById(R.id.text_echo);
