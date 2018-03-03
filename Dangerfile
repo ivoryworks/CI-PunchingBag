@@ -11,6 +11,11 @@ warn("A pull request must have some assignees") if github.pr_json["assignee"].ni
 # warn("a large PR") if git.lines_of_code > 300
 warn("変更行が多すぎます。プルリクエストの分割を検討してください。") if git.lines_of_code > 300
 
+# FindBugs
+findbugs.gradle_task = "app:findbugs"
+findbugs.report_file = "app/build/reports/findbugs/findbugs.xml"
+findbugs.report(true)
+
 # Android lint
 android_lint.gradle_task = "app:lint"
 android_lint.report_file = "app/build/reports/lint-results.xml"
