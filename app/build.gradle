@@ -1,4 +1,7 @@
 apply plugin: 'com.android.application'
+apply plugin: 'findbugs'
+
+check.dependsOn 'findbugs'
 
 android {
     compileSdkVersion 26
@@ -25,4 +28,30 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.1'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
+}
+
+task findbugs(type: FindBugs, dependsOn: "assembleDebug") {
+    ignoreFailures = true
+    effort = "max"
+    reportLevel = "high"
+
+    def conf
+    if (project.hasProperty('findBugsExcludeFilter')) {
+        conf = file(findBugsExcludeFilter)
+    }
+    excludeFilter = conf
+    classes = files("$project.buildDir/intermediates/classes/")
+
+    source 'src'
+    include '**/*.java'
+    exclude '**/gen/**'
+
+    reports {
+        xml {
+            destination new File("$project.buildDir/reports/findbugs/findbugs.xml")
+            xml.withMessages true
+        }
+    }
+
+    classpath = files()
 }
